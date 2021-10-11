@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+#menu-dropdown {
+   @apply absolute w-40 right-0 bg-mycolor rounded-xl flex flex-col overflow-hidden opacity-0 pointer-events-none invisible transition-all duration-300;
+}
+
+#menu-btn:focus + #menu-dropdown, #menu-dropdown:hover {
+   @apply opacity-100 pointer-events-auto visible;
+}
