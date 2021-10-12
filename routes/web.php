@@ -23,5 +23,6 @@ Route::get('/', function () {
 });
 
 Route::resource('/codes', MyCodeController::class)->middleware(['auth']);
+Route::get('/codes/{code:slug}', [MyCodeController::class, 'show']);
 
 require __DIR__.'/auth.php';
