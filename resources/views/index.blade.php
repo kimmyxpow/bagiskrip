@@ -8,7 +8,7 @@
          <p class="font-poppins text-mycolor-light-text lg:text-lg sm:text-base text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s.</p>
          <div class="flex items-center md:justify-start justify-center space-x-2">
             <a class="font-poppins font-medium py-1.5 px-8 rounded-full bg-mycolor text-white ring ring-offset-2 ring-transparent focus:ring-mycolor transition-all duration-300" href="/codes">Coba Sekarang</a>
-            <a title="Lihat di github" href="https://github.com/abinoval/my-code"><i class="bx bxl-github text-4xl"></i></a>
+            <a title="Lihat di github" target="_blank" rel="noopener noreferrer" href="https://github.com/abinoval/my-code"><i class="bx bxl-github text-4xl"></i></a>
          </div>
       </div>
       <img class="lg:order-2 order-1" src="{{ asset('img/main-img.png') }}" alt="Hero Image">
