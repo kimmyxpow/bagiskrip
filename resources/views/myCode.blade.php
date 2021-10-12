@@ -8,11 +8,11 @@
             {!! session('success') !!}
          </div>
       @endif
-      <div class="flex sm:flex-row flex-col justify-between sm:items-center sm:gap-0 gap-2">
+      <div class="flex sm:flex-row flex-col justify-between sm:items-center md:space-y-0 space-y-2">
          <a class="font-poppins font-medium py-2 px-8 rounded-xl bg-mycolor text-white ring ring-offset-2 ring-transparent focus:ring-mycolor transition-all duration-300 max-w-max" href="/codes/create">Tambah</a>
-         <form action="/codes">
-            <input type="search" name="s" value="{{ request('s') }}" placeholder="Cari kode..." class="border border-transparent rounded-xl py-2 px-6 font-poppins text-mycolor-dark-text focus:border-mycolor focus-within:border-mycolor focus-within:outline-none">
-            <button class="font-poppins font-medium py-2 px-8 rounded-xl bg-mycolor text-white ring ring-offset-2 ring-transparent focus:ring-mycolor transition-all duration-300 max-w-max" href="/codes" type="submit">Cari</button>
+         <form class="sm:block flex" action="/codes">
+            <input type="search" name="s" value="{{ request('s') }}" placeholder="Cari kode..." class="border border-transparent rounded-xl py-2 px-6 font-poppins text-mycolor-dark-text focus:border-mycolor focus-within:border-mycolor focus-within:outline-none sm:w-auto w-full">
+            <button class="font-poppins font-medium py-2 px-8 rounded-xl bg-mycolor text-white ring ring-offset-2 ring-transparent focus:ring-mycolor transition-all duration-300 max-w-max ml-1" href="/codes" type="submit">Cari</button>
          </form>
       </div>
       <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
@@ -21,9 +21,9 @@
             <div class="bg-white rounded-xl py-4 px-6 space-y-4">
                <div>
                   <h1 class="font-montserrat font-bold text-mycolor-dark-text text-lg">{{ $code->name }}</h1>
-                  <a class="text-sm text-mycolor-light-text font-poppins line-clamp-1 break-all hover:underline" href="http://127.0.0.1:8000/codes/{{ $code->slug }}">http://127.0.0.1:8000/codes/{{ $code->slug }}</a>
+                  <a class="text-sm text-mycolor-light-text font-poppins line-clamp-1 break-all hover:underline" href="{{ env('APP_URL') . 'codes/' . $code->slug }}">{{ env('APP_URL') . 'codes/' . $code->slug }}</a>
                </div>
-               <div class="flex gap-1">
+               <div class="flex space-x-1">
                   <a title="Edit Kode" href="/codes/{{  $code->slug  }}/edit" class="h-8 w-8 flex justify-center items-center bg-yellow-500 rounded-md"><i class="bx bx-edit text-white"></i></a>
                   <form action="/codes/{{ $code->slug }}" method="POST">
                      @method('delete')
@@ -32,9 +32,9 @@
                   </form>
                   <div class="copy-clipboard">
                      <button title="Salin Tautan Kode" class="h-8 w-8 flex justify-center items-center bg-green-400 rounded-md"><i class="bx bx-clipboard text-white"></i></button>
-                     <input class="absolute opacity-0 pointer-events-none invisible" type="text" value="http://127.0.0.1:8000/codes/{{ $code->slug }}">
+                     <input class="absolute opacity-0 pointer-events-none invisible" type="text" value="{{ env('APP_URL') . 'codes/' . $code->slug }}">
                   </div>
-                  <a title="Lihat Kode" href="http://127.0.0.1:8000/codes/{{ $code->slug }}" class="h-8 w-8 flex justify-center items-center bg-blue-400 rounded-md"><i class="bx bx-show text-white"></i></a>
+                  <a title="Lihat Kode" href="{{ env('APP_URL') . 'codes/' . $code->slug }}" class="h-8 w-8 flex justify-center items-center bg-blue-400 rounded-md"><i class="bx bx-show text-white"></i></a>
                </div>
                <div class="flex justify-between">
                   <p class="font-poppins text-sm text-mycolor-light-text">{{ $code->created_at->diffForHumans() }}</p>

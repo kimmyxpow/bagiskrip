@@ -6,9 +6,9 @@
       <div class="space-y-8 md:order-1 order-2">
          <h1 class="font-montserrat font-bold text-mycolor-dark-text lg:text-5xl sm:text-4xl text-3xl">Bagikan kodemu disini!</h1>
          <p class="font-poppins text-mycolor-light-text lg:text-lg sm:text-base text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s.</p>
-         <div class="flex items-center md:justify-start justify-center gap-2">
+         <div class="flex items-center md:justify-start justify-center space-x-2">
             <a class="font-poppins font-medium py-1.5 px-8 rounded-full bg-mycolor text-white ring ring-offset-2 ring-transparent focus:ring-mycolor transition-all duration-300" href="/codes">Coba Sekarang</a>
-            <a class="inline-block" title="Lihat di github" href="#"><i class="bx bxl-github text-4xl"></i></a>
+            <a title="Lihat di github" href="https://github.com/abinoval/my-code"><i class="bx bxl-github text-4xl"></i></a>
          </div>
       </div>
       <img class="lg:order-2 order-1" src="{{ asset('img/main-img.png') }}" alt="Hero Image">
@@ -23,21 +23,21 @@
          <h1 class="capitalize font-bold text-mycolor-dark-text text-2xl font-montserrat text-center">fitur yang bisa<br>digunakan olehmu</h1>
       </div>
       <div class="grid md:grid-cols-3 sm:grid-cols-2 col-span-1 gap-6">
-         <div class="text-center flex flex-col items-center gap-4">
+         <div class="text-center flex flex-col items-center space-y-4">
             <i class="bx bx-save text-2xl text-white p-3 rounded-2xl" style="background-image: linear-gradient(to bottom left, #7C83FD, #96BAFF); box-shadow: 0 24px 25px -10px rgba(124, 131, 253, 0.38);"></i>
             <div>
                <h3 class="text-lg font-bold font-montserrat text-mycolor-dark-text">Simpan dan Bagikan</h3>
                <p class="font-poppins font-normal text-base text-mycolor-light-text">Simpan kodemu dan bagikan kepada orang lain!</p>
             </div>
          </div>
-         <div class="text-center flex flex-col items-center gap-4">
+         <div class="text-center flex flex-col items-center space-y-4">
             <i class="bx bx-highlight text-2xl text-white p-3 rounded-2xl" style="background-image: linear-gradient(to bottom left, #BE03FF, #F199FF); box-shadow: 0 24px 25px -10px rgba(190, 3, 255, 0.38);"></i>
             <div>
                <h3 class="text-lg font-bold font-montserrat text-mycolor-dark-text">Syntax Highligting</h3>
                <p class="font-poppins font-normal text-base text-mycolor-light-text">Percantik kodemu dengan <em>syntax highlighting</em>!</p>
             </div>
          </div>
-         <div class="text-center flex flex-col items-center gap-4 md:col-span-1 sm:col-span-2">
+         <div class="text-center flex flex-col items-center space-y-4 md:col-span-1 sm:col-span-2">
             <i class="bx bx-code-alt text-2xl text-white p-3 rounded-2xl" style="background-image: linear-gradient(to bottom left, #00F0FF, #24FFD8); box-shadow: 0 24px 25px -10px rgba(0, 240, 253, 0.38);"></i>
             <div>
                <h3 class="text-lg font-bold font-montserrat text-mycolor-dark-text">Pilihan Bahasa</h3>
