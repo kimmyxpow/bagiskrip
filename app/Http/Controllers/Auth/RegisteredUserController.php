@@ -8,8 +8,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -41,6 +41,8 @@ class RegisteredUserController extends Controller
         ]);
 
         $validatedData['avatar'] = 'https://source.unsplash.com/random/' . mt_rand(1000,9999);
+        $validatedData['password'] = bcrypt($validatedData['password']);
+        $validatedData['remember_token'] = Str::random(10);
 
         $user = User::create($validatedData);
 
