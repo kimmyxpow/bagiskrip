@@ -2,7 +2,7 @@
 
 @section('container')
 <section class="grid grid-cols-12 sm:gap-6 gap-1 py-8">
-   <form method="POST" action="/codes" class="col-span-10 col-start-2 space-y-5">
+   <form method="POST" action="{{ $action }}" class="col-span-10 col-start-2 space-y-5">
       @csrf
       <div class="flex  sm:flex-row flex-col gap-4">
          <div class="flex flex-col gap-1">

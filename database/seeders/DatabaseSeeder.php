@@ -29,6 +29,16 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
+        User::create([
+            'name' => 'anonymous',
+            'email' => 'anonymous@example.com',
+            'username' => 'anonymous',
+            'email_verified_at' => now(),
+            'password' => bcrypt("aushasgahgdnkjweniu1y7266125612g3hbhs"),
+            'avatar' => 'https://source.unsplash.com/random/' . mt_rand(1000,9999),
+            'remember_token' => Str::random(10),
+        ]);
+
         // Code::create([
         //     'name' => 'Kode Index HTML',
         //     'slug' => 'kode-index-html-' . mt_rand(1000,9999),

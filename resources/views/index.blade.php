@@ -7,7 +7,7 @@
          <h1 class="font-montserrat font-bold text-mycolor-dark-text lg:text-5xl sm:text-4xl text-3xl">Bagikan kodemu disini!</h1>
          <p class="font-poppins text-mycolor-light-text lg:text-lg sm:text-base text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s.</p>
          <div class="flex items-center md:justify-start justify-center space-x-2">
-            <a class="font-poppins font-medium py-1.5 px-8 rounded-full bg-mycolor text-white ring ring-offset-2 ring-transparent focus:ring-mycolor transition-all duration-300" href="/codes">Coba Sekarang</a>
+            <a class="font-poppins font-medium py-1.5 px-8 rounded-full bg-mycolor text-white ring ring-offset-2 ring-transparent focus:ring-mycolor transition-all duration-300" href="/continue">Coba Sekarang</a>
             <a title="Lihat di github" target="_blank" rel="noopener noreferrer" href="https://github.com/abinoval/my-code"><i class="bx bxl-github text-4xl"></i></a>
          </div>
       </div>
@@ -167,7 +167,7 @@
    <div class="col-span-10 col-start-2">
       <div class="space-y-5 relative">
          <h1 class="sm:text-5xl text-3xl font-bold font-montserrat text-white">Tunggu Apa Lagi?</h1>
-         <a class="font-poppins font-medium inline-block py-1.5 px-8 rounded-full bg-white text-mycolor" href="/codes">Coba Sekarang</a>
+         <a class="font-poppins font-medium inline-block py-1.5 px-8 rounded-full bg-white text-mycolor" href="/continue">Coba Sekarang</a>
       </div>
       <img class="mx-auto -mt-24" src="{{ asset('img/human-study.png') }}" alt="Footer Image">
    </div>

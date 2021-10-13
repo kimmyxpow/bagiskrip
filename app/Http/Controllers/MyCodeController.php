@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Code;
 use App\Models\Lang;
-use DateTime;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Carbon;
 
 class MyCodeController extends Controller
 {
@@ -35,6 +33,7 @@ class MyCodeController extends Controller
         return view('addCode', [
             'title' => 'Upload Kode',
             'langs' => Lang::all()->sortBy('name'),
+            'action' => '/codes'
         ]);
     }
 

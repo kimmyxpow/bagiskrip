@@ -7,11 +7,13 @@
          <h1 class="text-2xl text-mycolor-dark-text font-montserrat font-bold">{{ $code->name }}</h1>
          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center sm:space-y-0 space-y-4">
             <div class="flex items-center space-x-4">
-               <p class="font-poppins text-mycolor-light-text flex items-center space-x-1"><img class="rounded-full object-cover object-center" src="{{ $code->user->avatar }}" style="width: 30px; height: 30px; min-height: 30px; min-width: 30px; max-width: 30px; max-height: 30px;" alt="{{ $code->user->username }}"><span>{{ $code->user->username }}</span></p>
-               <div class="flex items-center">
-                  <i class="bx bx-show text-mycolor-light-text"></i>
-                  <p class="text-sm text-mycolor-light-text font-medium font-poppins">{{ $code->views }}</p>
-               </div>
+               @if ($code->user->name != 'anonymous')
+                   <p class="font-poppins text-mycolor-light-text flex items-center space-x-1"><img class="rounded-full object-cover object-center" src="{{ $code->user->avatar }}" style="width: 30px; height: 30px; min-height: 30px; min-width: 30px; max-width: 30px; max-height: 30px;" alt="{{ $code->user->username }}"><span>{{ $code->user->username }}</span></p>
+                   <div class="flex items-center">
+                      <i class="bx bx-show text-mycolor-light-text"></i>
+                      <p class="text-sm text-mycolor-light-text font-medium font-poppins">{{ $code->views }}</p>
+                   </div>
+               @endif
                <p class="font-poppins text-sm text-mycolor-light-text">{{ $code->created_at->diffForHumans() }}</p>
             </div>
             <div class="flex space-x-1 copy-clipboard">

@@ -25,4 +25,8 @@ Route::get('/', function () {
 Route::resource('/codes', MyCodeController::class)->middleware(['auth']);
 Route::get('/codes/{code:slug}', [MyCodeController::class, 'show']);
 
+Route::get('/continue', [CodeController::class, 'index'])->middleware(['guest']);
+Route::get('/add', [CodeController::class, 'create'])->middleware(['guest']);
+Route::post('/add', [CodeController::class, 'store'])->middleware(['guest']);
+
 require __DIR__.'/auth.php';
