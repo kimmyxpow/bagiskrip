@@ -32,7 +32,7 @@
                   </form>
                   <div class="copy-clipboard">
                      <button title="Salin Tautan Kode" class="h-8 w-8 flex justify-center items-center bg-green-400 rounded-md"><i class="bx bx-clipboard text-white"></i></button>
-                     <input class="absolute opacity-0 pointer-events-none invisible" type="text" value="{{ env('APP_URL') . 'codes/' . $code->slug }}">
+                     <input class="absolute opacity-0" style="z-index: -1;" type="text" value="{{ env('APP_URL') . 'codes/' . $code->slug }}">
                   </div>
                   <a title="Lihat Kode" href="{{ env('APP_URL') . 'codes/' . $code->slug }}" class="h-8 w-8 flex justify-center items-center bg-blue-400 rounded-md"><i class="bx bx-show text-white"></i></a>
                </div>
