@@ -4,7 +4,7 @@ Website ini bisa digunakan untuk meyimpan dan membagikan kode seperti pastebin, 
 
 Link :
 - Repositori : https://github.com/abinoval/my-code
-- Website : http://mycodee.000webhostapp.com/
+- Website : http://mycode.great-site.net/
 
 Projek ini dibuat menggunakan :
  - TailwindCSS 2
@@ -13,11 +13,3 @@ Projek ini dibuat menggunakan :
  - Javascript Vanilla
  - prism.js
 - API unsplash
-
-Sebagian text masih dummy dan untuk auth masih menggunakan default dari laravel breeze.
- 
-Jika saat mengakses website muncul error seperti ini atau semacamnya :
-
-> SQL ERROR : Max connect timeout reached while reaching hostgroup 1009 after 10000ms [9001]
-
-Error itu kemungkinan dikarenakan webnya kena limit query database, bisa di tunggu beberapa saat dulu baru bisa di akses lagi.
