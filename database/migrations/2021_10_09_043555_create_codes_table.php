@@ -18,6 +18,7 @@ class CreateCodesTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('code');
+            $table->text('password')->nullable();
             $table->foreignId('lang_id');
             $table->foreignId('user_id');
             $table->string('published_at')->nullable();

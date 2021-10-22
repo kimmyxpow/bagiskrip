@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
-<section class="grid grid-cols-12 sm:gap-6 gap-1 py-8">
-   <div class="col-span-10 col-start-2 space-y-5">
+<section class="grid sm:grid-cols-12 grid-cols-1 sm:gap-6 gap-1 py-8 sm:px-0 px-4">
+   <div class="sm:col-span-10 col-span-1 sm:col-start-2 col-start-1 space-y-5">
       @if (session()->has('success'))
          <div class="bg-green-500 py-2 px-5 font-poppins font-medium text-white rounded-md">
             {!! session('success') !!}
@@ -45,14 +45,18 @@
                </div>
             </div>
          @endforeach
-        @else
+         @elseif(!isset($_GET['page']))
             @if (request('s'))
                <h1 class="col-span-1 sm:col-span-2 md:col-span-3 font-montserrat text-2xl text-mycolor-dark-text font-bold">Tidak ada kode dengan nama {{ request('s') }}</h1>
             @else
                <h1 class="col-span-1 sm:col-span-2 md:col-span-3 font-montserrat text-2xl text-mycolor-dark-text font-bold">Ayo Tambah Kodenya Dan Bagikan Pada Orang Lain!</h1>
             @endif
-        @endif
+         @else
+            <h1 class="col-span-1 sm:col-span-2 md:col-span-3 font-montserrat text-2xl text-mycolor-dark-text font-bold">No codes found!</h1>
+         @endif
       </div>
+
+      {!! $codes->links() !!}
    </div>
 </section>
 <script>

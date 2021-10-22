@@ -784,6 +784,10 @@ select {
   grid-column: span 10 / span 10;
 }
 
+.col-start-1 {
+  grid-column-start: 1;
+}
+
 .col-start-2 {
   grid-column-start: 2;
 }
@@ -2036,6 +2040,14 @@ select {
     grid-column: span 2 / span 2;
   }
 
+  .sm\:col-span-10 {
+    grid-column: span 10 / span 10;
+  }
+
+  .sm\:col-start-2 {
+    grid-column-start: 2;
+  }
+
   .sm\:my-10 {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
@@ -2100,6 +2112,10 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .sm\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -2132,6 +2148,11 @@ select {
 
   .sm\:rounded-lg {
     border-radius: 0.5rem;
+  }
+
+  .sm\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .sm\:px-6 {
@@ -2236,10 +2257,6 @@ select {
 }
 
 @media (min-width: 1024px) {
-  .lg\:order-2 {
-    order: 2;
-  }
-
   .lg\:col-span-8 {
     grid-column: span 8 / span 8;
   }

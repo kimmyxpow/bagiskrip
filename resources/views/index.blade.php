@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
-<section class="grid grid-cols-12 sm:gap-6 gap-1 sm:mt-0 mt-8">
-   <div class="grid col-span-10 col-start-2 md:grid-cols-2 gap-6 items-center md:text-left text-center">
+<section class="grid sm:grid-cols-12 grid-cols-1 sm:gap-6 gap-1 sm:mt-0 mt-8 sm:px-0 px-4">
+   <div class="grid sm:col-span-10 col-span-1 sm:col-start-2 col-start-1 md:grid-cols-2 gap-6 items-center md:text-left text-center">
       <div class="space-y-8 md:order-1 order-2">
          <h1 class="font-montserrat font-bold text-mycolor-dark-text lg:text-5xl sm:text-4xl text-3xl">Bagikan kodemu disini!</h1>
          <p class="font-poppins text-mycolor-light-text lg:text-lg sm:text-base text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s.</p>
@@ -11,11 +11,11 @@
             <a title="Lihat di github" target="_blank" rel="noopener noreferrer" href="https://github.com/abinoval/my-code"><i class="bx bxl-github text-4xl"></i></a>
          </div>
       </div>
-      <img class="lg:order-2 order-1" src="{{ asset('img/main-img.png') }}" alt="Hero Image">
+      <img class="md:order-2 order-1" src="{{ asset('img/main-img.png') }}" alt="Hero Image">
    </div>
 </section>
-<section class="grid grid-cols-12 sm:gap-6 gap-1 py-16">
-   <div class="grid lg:col-span-8 col-span-10 lg:col-start-3 col-start-2 space-y-14">
+<section class="grid sm:grid-cols-12 grid-cols-1 sm:gap-6 gap-1 py-16 sm:px-0 px-4">
+   <div class="grid lg:col-span-8 sm:col-span-10 col-span-1 sm:col-start-2 col-start-1 lg:col-start-3 space-y-14">
       <div class="flex flex-col items-center gap-2">
          <svg width="46" height="3" viewBox="0 0 46 3" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line x1="1.08301" y1="1.67181" x2="44.9166" y2="1.67181" stroke="#7C83FD" stroke-width="2" stroke-linecap="round"/>
@@ -47,8 +47,8 @@
       </div>
    </div>
 </section>
-<section class="grid grid-cols-12 sm:gap-6 gap-1 py-16">
-   <div class="col-span-10 col-start-2 space-y-14">
+<section class="grid sm:grid-cols-12 grid-cols-1 sm:gap-6 gap-1 py-16 sm:px-0 px-4">
+   <div class="sm:col-span-10 col-span-1 sm:col-start-2 col-start-1 space-y-14">
       <div class="flex flex-col items-center gap-2">
          <svg width="46" height="3" viewBox="0 0 46 3" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line x1="1.08301" y1="1.67181" x2="44.9166" y2="1.67181" stroke="#7C83FD" stroke-width="2" stroke-linecap="round"/>
@@ -163,8 +163,8 @@
       </div>
    </div>
 </section>
-<section class="grid grid-cols-12 sm:gap-6 gap-1 py-16 bg-mycolor text-center">
-   <div class="col-span-10 col-start-2">
+<section class="grid sm:grid-cols-12 grid-cols-1 sm:gap-6 gap-1 py-16 bg-mycolor text-center sm:px-0 px-4">
+   <div class="sm:col-span-10 col-span-1 sm:col-start-2 col-start-1">
       <div class="space-y-5 relative">
          <h1 class="sm:text-5xl text-3xl font-bold font-montserrat text-white">Tunggu Apa Lagi?</h1>
          <a class="font-poppins font-medium inline-block py-1.5 px-8 rounded-full bg-white text-mycolor" href="/continue">Coba Sekarang</a>

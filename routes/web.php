@@ -29,4 +29,7 @@ Route::get('/continue', [CodeController::class, 'index'])->middleware(['guest'])
 Route::get('/add', [CodeController::class, 'create'])->middleware(['guest']);
 Route::post('/add', [CodeController::class, 'store'])->middleware(['guest']);
 
+Route::get('/codes/unlock/{code:slug}', [CodeController::class, 'lock']);
+Route::post('/codes/unlock/{code:slug}', [CodeController::class, 'unlock']);
+
 require __DIR__.'/auth.php';

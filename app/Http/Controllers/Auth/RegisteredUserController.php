@@ -42,7 +42,6 @@ class RegisteredUserController extends Controller
 
         $validatedData['avatar'] = 'https://source.unsplash.com/random/' . mt_rand(1000,9999);
         $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['remember_token'] = Str::random(10);
 
         $user = User::create($validatedData);
 

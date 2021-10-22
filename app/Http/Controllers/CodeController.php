@@ -6,6 +6,7 @@ use App\Models\Code;
 use App\Models\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CodeController extends Controller
 {
@@ -21,7 +22,8 @@ class CodeController extends Controller
         return view('addCode', [
             'title' => 'Upload Kode',
             'langs' => Lang::all()->sortBy('name'),
-            'action' => '/add'
+            'action' => '/add',
+            'continue' => 'not login',
         ]);
     }
 
@@ -44,5 +46,27 @@ class CodeController extends Controller
         Code::where('slug', $validatedData['slug'])->update(['published_at' => Code::all()->firstWhere('slug', $validatedData['slug'])->added_at]);
 
         return redirect('/codes/' . $validatedData['slug']);
+    }
+
+    public function lock(Code $code)
+    {
+        if (Auth::id() != $code->user->id) {
+            return view('unlock', [
+                'title' => 'Buka Kunci Kode',
+                'code' => $code
+            ]);
+        }
+
+        return redirect('/codes/' . $code->slug);
+    }
+
+    public function unlock(Code $code, Request $request)
+    {
+        $password = md5($request->password);
+        if ($password != $code->password) {
+            return redirect('/codes/unlock/' . $code->slug)->with('error', 'Password incorect');
+        }
+
+        return redirect('/codes/' . $code->slug)->with('unlocked', 'Berhasil membuka kode');
     }
 }

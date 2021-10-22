@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
-<section class="grid grid-cols-12 sm:gap-6 gap-1 py-8">
-   <div class="col-span-10 col-start-2 space-y-5">
+<section class="grid sm:grid-cols-12 grid-cols-1 sm:gap-6 gap-1 py-8 sm:px-0 px-4">
+   <div class="sm:col-span-10 col-span-1 sm:col-start-2 col-start-1 space-y-5">
       <div class="space-y-2">
          <h1 class="text-2xl text-mycolor-dark-text font-montserrat font-bold">{{ $code->name }}</h1>
          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center sm:space-y-0 space-y-4">
