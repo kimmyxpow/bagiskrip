@@ -18,7 +18,7 @@ class CodeController extends Controller
     public function index()
     {
         $langs = Lang::orderBy('name')->get();
-        $visibilities = Visibility::orderBy('name')->get();
+        $visibilities = Visibility::all();
 
         return view('code.index', compact('langs', 'visibilities'));
     }

@@ -21,15 +21,3 @@ Route::post('/', [CodeController::class, 'store'])->name('store');
 Route::get('/{code:hash}', [CodeController::class, 'show'])->name('show');
 Route::get('/{code:hash}/unlock', [CodeController::class, 'password'])->name('password');
 Route::post('/{code:hash}/unlock', [CodeController::class, 'unlock'])->name('unlock');
-
-Route::get('/test/query', function () {
-    $codes = Code::all();
-    $baseQuery = Code::whereHas('visibility', function (Builder $query) {
-        $query->where('name', 'public');
-    });
-
-    $latestScripts = $baseQuery->latest()->limit(5)->get();
-    $popularScripts = $baseQuery->orderBy('views')->limit(5)->get();
-
-    return compact('codes', 'latestScripts', 'popularScripts');
-});
