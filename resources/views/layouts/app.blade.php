@@ -42,7 +42,7 @@
         </nav>
 
         <main class="my-32">
-            <div class="container lg:grid grid-cols-12 lg:gap-10 space-y-10">
+            <div class="container lg:grid grid-cols-12 lg:gap-10 lg:space-y-0 space-y-10">
                 <div class="xl:col-span-8 col-span-7">
                     {{ $slot }}
                 </div>
