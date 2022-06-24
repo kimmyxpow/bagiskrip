@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CodeController;
+use App\Models\Code;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +21,14 @@ Route::post('/', [CodeController::class, 'store'])->name('store');
 Route::get('/{code:hash}', [CodeController::class, 'show'])->name('show');
 Route::get('/{code:hash}/unlock', [CodeController::class, 'password'])->name('password');
 Route::post('/{code:hash}/unlock', [CodeController::class, 'unlock'])->name('unlock');
+
+Route::get('/test', function () {
+    $baseQuery = Code::whereHas('visibility', function (Builder $query) {
+        $query->where('name', 'public');
+    });
+
+    $latestScripts = $baseQuery->latest()->limit(5)->get();
+    $popularScripts = $baseQuery->orderBy('views')->limit(5)->get();
+
+    return compact('latestScripts', 'popularScripts');
+});
