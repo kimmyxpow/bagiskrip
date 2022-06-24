@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="sm:flex sm:justify-between grid gap -4">
+        <div class="sm:flex sm:justify-between grid gap-4">
             <button
                 class="inline-block py-2 px-6 rounded-lg border border-indigo-600 text-indigo-600 font-medium hover:bg-indigo-100 focus:text-white focus:bg-indigo-600 transition-all duration-300 focus:outline-none sm:order-1 order-2"
                 id="copyScript">
@@ -32,7 +32,7 @@
                 name="script" id="script">{{ $code->script }}</textarea>
             <div class="flex items-center gap-1 sm:order-2 order-1">
                 <input
-                    class="border border-gray-200 rounded-lg focus:outline-none py-2 px-4 ring ring-transparent focus:border-indigo-600 focus:ring-indigo-200 transition-all duration-300"
+                    class="border border-gray-200 rounded-lg focus:outline-none py-2 px-4 ring ring-transparent focus:border-indigo-600 focus:ring-indigo-200 transition-all duration-300 sm:w-auto w-full"
                     name="link" id="link" readonly value="{{ config('app.url') . '/' . $code->hash }}"
                     type="text" />
                 <button
