@@ -22,7 +22,7 @@ Route::get('/{code:hash}', [CodeController::class, 'show'])->name('show');
 Route::get('/{code:hash}/unlock', [CodeController::class, 'password'])->name('password');
 Route::post('/{code:hash}/unlock', [CodeController::class, 'unlock'])->name('unlock');
 
-Route::get('/test', function () {
+Route::get('/test/query', function () {
     $baseQuery = Code::whereHas('visibility', function (Builder $query) {
         $query->where('name', 'public');
     });
