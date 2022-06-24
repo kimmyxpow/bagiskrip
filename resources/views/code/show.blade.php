@@ -2,7 +2,7 @@
     <div class="space-y-6">
         <div class="space-y-2">
             <h1 class="text-2xl font-bold text-gray-600">{{ $code->title }}</h1>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4 sm:text-base text-sm">
                 <div class="flex items-center gap-1 text-gray-600">
                     <i class='bx bx-time'></i>
                     <span>{{ $code->created_at->diffForHumans() }}</span>
