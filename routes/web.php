@@ -31,5 +31,5 @@ Route::get('/test/query', function () {
     $latestScripts = $baseQuery->latest()->limit(5)->get();
     $popularScripts = $baseQuery->orderBy('views')->limit(5)->get();
 
-    return compact('code', 'latestScripts', 'popularScripts');
+    return compact('codes', 'latestScripts', 'popularScripts');
 });
