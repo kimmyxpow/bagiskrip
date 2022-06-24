@@ -26,7 +26,7 @@ class AppLayout extends Component
     public function render()
     {
         $baseQuery = Code::whereHas('visibility', function (Builder $query) {
-            $query->where('name', 'public');
+            $query->where('key', 'public');
         });
 
         $latestScripts = $baseQuery->latest()->limit(5)->get();
