@@ -15,7 +15,7 @@ class VisibilitySeeder extends Seeder
      */
     public function run()
     {
-        Visibility::create(['hash' => bin2hex(random_bytes(20)), 'name' => 'Public']);
-        Visibility::create(['hash' => bin2hex(random_bytes(20)), 'name' => 'Private']);
+        Visibility::create(['hash' => bin2hex(random_bytes(20)), 'name' => 'Public', 'key' => 'public']);
+        Visibility::create(['hash' => bin2hex(random_bytes(20)), 'name' => 'Private', 'name' => 'private']);
     }
 }

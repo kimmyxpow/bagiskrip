@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('hash')->unique();
             $table->string('name');
+            $table->string('key');
             $table->timestamps();
         });
     }
