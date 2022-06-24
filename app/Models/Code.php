@@ -4,33 +4,41 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Code extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['title', 'code', 'lang', 'view','publish_by'];
     protected $guarded = ['id'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function lang()
-    {
-        return $this->belongsTo(Lang::class);
-    }
-
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'hash';
     }
 
-    public function scopeFilter($query, array $filters)
+    /**
+     * Get the visibility that owns the Code
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function visibility(): BelongsTo
     {
-        $query->when($filters['s'] ?? false, function ($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%');;
-        });
+        return $this->belongsTo(Visibility::class, 'visibility_hash', 'hash');
+    }
+
+    /**
+     * Get the lang that owns the Code
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function lang(): BelongsTo
+    {
+        return $this->belongsTo(Lang::class, 'lang_hash', 'hash');
     }
 }

@@ -4,69 +4,88 @@ namespace App\Http\Controllers;
 
 use App\Models\Code;
 use App\Models\Lang;
-use Illuminate\Support\Str;
+use App\Models\Visibility;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CodeController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('continue', [
-            'title' => 'My Code',
-        ]);
+        $langs = Lang::orderBy('name')->get();
+        $visibilities = Visibility::orderBy('name')->get();
+
+        return view('code.index', compact('langs', 'visibilities'));
     }
 
-    public function create()
-    {
-        return view('addCode', [
-            'title' => 'Upload Kode',
-            'langs' => Lang::all()->sortBy('name'),
-            'action' => '/add',
-            'continue' => 'not login',
-        ]);
-    }
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'lang' => 'required|max:255',
-            'code' => 'required|max:65535',
-            'name' => 'required|max:255'
+            'script' => ['required'],
+            'title' => ['required', 'max:255'],
+            'lang_hash' => ['required', 'max:255'],
+            'password' => ['max:255'],
+            'visibility_hash' => ['required', 'max:255'],
         ]);
 
-        $validatedData['slug'] = Str::lower(Str::slug($validatedData['name'])) . '-' . mt_rand(1000, 9999);
-        $validatedData['user_id'] = 2;
-        $validatedData['code'] = htmlspecialchars($request['code']);
-        $validatedData['lang_id'] = $validatedData['lang'];
-        unset($validatedData['lang']);
+        $validatedData['hash'] = bin2hex(random_bytes(20));
 
-        Code::create($validatedData);
-
-        Code::where('slug', $validatedData['slug'])->update(['published_at' => Code::all()->firstWhere('slug', $validatedData['slug'])->added_at]);
-
-        return redirect('/codes/' . $validatedData['slug']);
-    }
-
-    public function lock(Code $code)
-    {
-        if (Auth::id() != $code->user->id) {
-            return view('unlock', [
-                'title' => 'Buka Kunci Kode',
-                'code' => $code
-            ]);
+        if ($request->password) {
+            $validatedData['password'] = bcrypt($request->password);
         }
 
-        return redirect('/codes/' . $code->slug);
+        $code = Code::create($validatedData);
+
+        return to_route('show', $code->hash);
     }
 
-    public function unlock(Code $code, Request $request)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Code  $code
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Code $code)
     {
-        $password = md5($request->password);
-        if ($password != $code->password) {
-            return redirect('/codes/unlock/' . $code->slug)->with('error', 'Password incorect');
+        if (!is_null($code->password) && session('unlock') !== $code->hash) {
+            return to_route('password', $code->hash);
         }
 
-        return redirect('/codes/' . $code->slug)->with('unlocked', 'Berhasil membuka kode');
+        $code->views += 1;
+        $code->save();
+
+        session()->forget('unlock');
+
+        return view('code.show', compact('code'));
+    }
+
+    public function password(Code $code)
+    {
+        if (session('unlock') === $code->hash || is_null($code->password)) {
+            return to_route('show', $code->hash);
+        }
+
+        return view('code.password', compact('code'));
+    }
+
+    public function unlock(Request $request, Code $code)
+    {
+        if (Hash::check($request->password, $code->password)) {
+            session(['unlock' => $code->hash]);
+            return to_route('show', $code->hash);
+        }
+
+        return to_route('password', $code->hash)->with('message', 'Password salah');
     }
 }

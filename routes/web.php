@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\CodeController;
-use App\Http\Controllers\MyCodeController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Code;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,20 +14,8 @@ use App\Models\Code;
 |
 */
 
-Route::get('/', function () {
-    return view('index', [
-        'title' => 'My Code'
-    ]);
-});
-
-Route::resource('/codes', MyCodeController::class)->middleware(['auth']);
-Route::get('/codes/{code:slug}', [MyCodeController::class, 'show']);
-
-Route::get('/continue', [CodeController::class, 'index'])->middleware(['guest']);
-Route::get('/add', [CodeController::class, 'create'])->middleware(['guest']);
-Route::post('/add', [CodeController::class, 'store'])->middleware(['guest']);
-
-Route::get('/codes/unlock/{code:slug}', [CodeController::class, 'lock']);
-Route::post('/codes/unlock/{code:slug}', [CodeController::class, 'unlock']);
-
-require __DIR__.'/auth.php';
+Route::get('/', [CodeController::class, 'index'])->name('index');
+Route::post('/', [CodeController::class, 'store'])->name('store');
+Route::get('/{code:hash}', [CodeController::class, 'show'])->name('show');
+Route::get('/{code:hash}/unlock', [CodeController::class, 'password'])->name('password');
+Route::post('/{code:hash}/unlock', [CodeController::class, 'unlock'])->name('unlock');
