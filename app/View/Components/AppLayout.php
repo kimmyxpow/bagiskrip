@@ -25,12 +25,14 @@ class AppLayout extends Component
      */
     public function render()
     {
-        $baseQuery = Code::whereHas('visibility', function (Builder $query) {
+        $latestScripts = Code::whereHas('visibility', function (Builder $query) {
             $query->where('key', 'public');
-        });
+        })->latest()->take(5)->get();
+        $popularScripts = Code::whereHas('visibility', function (Builder $query) {
+            $query->where('key', 'public');
+        })->orderBy('views', 'desc')->take(5)->get();
 
-        $latestScripts = $baseQuery->latest()->limit(5)->get();
-        $popularScripts = $baseQuery->orderBy('views')->limit(5)->get();
+        // dd($popularScripts);
 
         $langsFolder = opendir('js/langs/');
         $langFiles = [];
