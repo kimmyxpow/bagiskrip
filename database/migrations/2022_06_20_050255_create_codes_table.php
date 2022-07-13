@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('visibility_hash')->references('hash')->on('visibilities');
             $table->string('lang_hash');
             $table->foreign('lang_hash')->references('hash')->on('langs');
-            $table->string('views')->default(0);
+            $table->bigInteger('views')->default(0);
             $table->timestamps();
         });
     }
