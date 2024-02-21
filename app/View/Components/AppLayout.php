@@ -32,11 +32,6 @@ class AppLayout extends Component
             $query->where('key', 'public');
         })->orderBy('views', 'desc')->take(5)->get();
 
-        $langsFolder = 'js/langs/';
-        $langFiles = glob($langsFolder . '*.*');
-
-        $langFiles = array_map('basename', $langFiles);
-
-        return view('layouts.app', compact('latestScripts', 'popularScripts', 'langFiles'));
+        return view('layouts.app', compact('latestScripts', 'popularScripts',));
     }
 }
